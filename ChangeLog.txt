@@ -1,0 +1,5 @@
+1.1.0
+
+- Intial release with all features from PSPCap32
+  (cheat codes, auto-run disk, etc ...)
+- New background images

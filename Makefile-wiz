@@ -1,0 +1,84 @@
+#
+# Caprice32 port on WIZ 
+#
+# Copyright (C) 2009 Ludovic Jacomme (ludovic.jacomme@gmail.com)
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+CAP32_VERSION=1.1.0
+
+TARGET = wizcap32.gpe
+SDL_CONFIG = $(WIZDEV)/bin/sdl-config
+OBJS = gp2x_psp.o \
+cpuwiz.o  \
+cap32.o \
+crtc.o \
+fdc.o \
+psg.o \
+video.o \
+z80.o \
+psp_main.o \
+psp_sdl.o \
+psp_kbd.o \
+psp_joy.o \
+kbd.o \
+psp_font.o \
+psp_menu.o \
+psp_run.o \
+psp_menu_disk.o \
+psp_danzeff.o \
+psp_menu_set.o \
+psp_menu_help.o \
+psp_menu_joy.o \
+psp_menu_kbd.o \
+psp_menu_cheat.o \
+psp_menu_list.o \
+psp_editor.o \
+miniunz.o \
+unzip.o \
+psp_fmgr.o
+
+CC=openwiz-gcc
+CXX=openwiz-g++
+STRIP=openwiz-strip
+
+DEFAULT_CFLAGS = $(shell $(SDL_CONFIG) --cflags)
+
+MORE_CFLAGS = -I. -I$(WIZDEV)/include \
+-DNO_STDIO_REDIRECT -DCAP32_VERSION=\"$(CAP32_VERSION)\" \
+-DWIZ_MODE 
+
+CFLAGS = $(DEFAULT_CFLAGS) $(MORE_CFLAGS) -O2 -Wall -fsigned-char \
+   -funroll-loops -ffast-math -fomit-frame-pointer -fno-strength-reduce -finline-functions
+
+LIBS += -Wl,-rpath,$(OPENWIZ)/lib -L$(WIZDEV)/lib -lSDL_image -lSDL -lpng -lz -lm -lpthread -Llibcpccat -lcpccat
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.cpp.o:
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(TARGET) && $(STRIP) $(TARGET)
+
+install: $(TARGET)
+	cp $< /media/usbdisk/game/wizcap32/
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+ctags: 
+	ctags *[ch]
