@@ -83,33 +83,33 @@ typedef struct gp2xCtrlData SceCtrlData;
 #else
 
 //some keys of the keyboard to emulate gp2x
-#define GP2X_UPLEFT         4 //A
-#define GP2X_UP             29 //Z
-#define GP2X_UPRIGHT        8 //E
+#define GP2X_UPLEFT         83 //
+#define GP2X_UP             82 // UP
+#define GP2X_UPRIGHT        84 //
 
-#define GP2X_LEFT           20 //Q
-#define GP2X_RIGHT          22 //S
+#define GP2X_LEFT           80 // LEFT
+#define GP2X_RIGHT          79 // RIGHT
 
-#define GP2X_DOWNLEFT       224 //MENU
-#define GP2X_DOWN           26 //W
-#define GP2X_DOWNRIGHT      27 //X
+#define GP2X_DOWNLEFT       85 //
+#define GP2X_DOWN           81 // DOWN
+#define GP2X_DOWNRIGHT      86 //
 
 # if 0
-#define GP2X_A              38 //SDLK_a
-#define GP2X_B              56 //SDLK_b
-#define GP2X_X              53 //SDLK_x
-#define GP2X_Y              29 //SDLK_y
+#define GP2X_A              38 //
+#define GP2X_B              56 //
+#define GP2X_X              53 //
+#define GP2X_Y              29 //
 # else
-#define GP2X_A              14 //SDLK_a
-#define GP2X_B              15 //SDLK_d
-#define GP2X_X              19 //SDLK_x
-#define GP2X_Y              18 //SDLK_w
+#define GP2X_A              14 // K
+#define GP2X_B              15 // L
+#define GP2X_X              19 // P
+#define GP2X_Y              18 // O
 # endif
-#define GP2X_L              58 //SDLK_l
-#define GP2X_R              59 //SDLK_r
-#define GP2X_FIRE           54 //SDLK_SPACE
-#define GP2X_START          40 //SDLK_RETURN
-#define GP2X_SELECT         44  //SDLK_s
+#define GP2X_L              13 // J
+#define GP2X_R              12 // I
+#define GP2X_FIRE           54 //
+#define GP2X_START          224 // MENU
+#define GP2X_SELECT         77  // ACTION
 #define GP2X_VOLUP         75     //SDLK_KP_PLUS
 #define GP2X_VOLDOWN       78    //SDLK_KP_MINUS
 

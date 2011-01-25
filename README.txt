@@ -1,5 +1,6 @@
 
-    Welcome to WizCAP32
+Welcome to AndCPC !
+
 
 Original Author of Caprice32
 
